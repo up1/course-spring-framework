@@ -32,15 +32,15 @@ public class EmployeeControllerTest {
     
     @Test
     public void serviceShouldThrowException() {
-//        // Stub
-//        when(employeeService.listAll())
-//          .thenThrow(InvalidDividedByZeroException.class);
-//        
+        // Stub
+        when(employeeService.listAll())
+          .thenThrow(new InvalidDividedByZeroException());
+
         EmployeeResponse response = 
                 restTemplate.getForObject("/employee", 
                       EmployeeResponse.class);
         
-        assertEquals(200, response.getCode());
+        assertEquals(401, response.getCode());
         
     }
 
